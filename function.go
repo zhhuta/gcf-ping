@@ -1,4 +1,4 @@
-package gcf-ping
+package gcfping
 
 import (
 	"fmt"
@@ -25,4 +25,3 @@ func Ping() {
 	fmt.Printf("PING %s (%s):\n", pinger.Addr(), pinger.IPAddr())
 
 }
-
