@@ -1,4 +1,4 @@
-package main
+package gcf-ping
 
 import (
 	"fmt"
@@ -26,6 +26,3 @@ func Ping() {
 
 }
 
-func main() {
-	Ping()
-}
