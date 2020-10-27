@@ -7,11 +7,24 @@ import (
 	"github.com/go-ping/ping"
 )
 
+type Address struct {
+	Addr string `json:"addr"`
+}
+
 //Ping test conneciton
 func Ping(w http.ResponseWriter, r *http.Request) {
-	pinger, err := ping.NewPinger("www.google.com")
+	fmt.Println("Starrting....")
+	var addr Address
+	err := json.NewDecoder(r.Body).Decode(&Address{})
 	if err != nil {
-		panic(err)
+		//log.Fatal(err)
+		json.NewEncoder(w).Encode(err.Error())
+	
+	pinger, err := ping.NewPinger(addr)
+	if err != nil {
+		//panic(err)
+		fmt.Println("Error creating pinger")
+		json.NewEncoder(w).Encode(err.Error())
 	}
 	pinger.Count = 3
 	pinger.Run()                 // blocks until finished
