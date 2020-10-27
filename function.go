@@ -2,12 +2,13 @@ package gcfping
 
 import (
 	"fmt"
+	"net/http"
 
 	"github.com/go-ping/ping"
 )
 
 //Ping test conneciton
-func Ping() {
+func Ping(w http.ResponseWriter, r *http.Request) {
 	pinger, err := ping.NewPinger("www.google.com")
 	if err != nil {
 		panic(err)
